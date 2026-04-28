@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Flower Shop</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">🌸 Blossom Shop</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/Home/Shop">Shop</a></li>
+                <li><a href="/Home/About">About</a></li>
+                <li><a href="/Home/Contact">Contact</a></li>
+
+                @if (Context.Session.GetString("Role") != null)
+                {
+                    <li style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span>👋 @Context.Session.GetString("Username")</span>
+                        <span style="background: var(--primary-color); color: white; padding: 0.2rem 0.5rem; border-radius: 10px; font-size: 0.8rem;">
+                            @Context.Session.GetString("Role")
+                        </span>
+                    </li>
+                    <li><a href="/Account/Dashboard">Dashboard</a></li>
+                    <li><a href="/Account/Logout">Logout</a></li>
+                }
+                else
+                {
+                    <li><a href="/Account/Login">Login</a></li>
+                    <li><a href="/Account/Register">Register</a></li>
+                }
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Blossom Shop</h3>
+                    <p>Your trusted flower destination for fresh blooms and heartfelt gifts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="/">Home</a>
+                    <a href="/Home/Shop">Shop</a>
+                    <a href="/Home/About">About</a>
+                    <a href="/Home/Contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>📧 info@blossomshop.com</p>
+                    <p>📱 (555) 123-4567</p>
+                    <p>🌍 123 Flower Street</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Blossom Shop. All rights reserved. 🌺</p>
+            </div>
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

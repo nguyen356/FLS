@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Seed Database";
+}
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">🌱 Database Seeding</h2>
+
+        <div class="flower-card" style="max-width: 600px; margin: 0 auto;">
+            <div style="padding: 2rem; text-align: center;">
+                <h3>Current Database Status</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                    <div>
+                        <div style="font-size: 2rem; color: var(--primary-color);">@ViewBag.FlowerCount Flowers</div>
+                        <div style="color: #666;">Flowers in database</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; color: var(--accent-color);">@ViewBag.UserCount Users</div>
+                        <div style="color: #666;">Users in database</div>
+                    </div>
+                </div>
+
+                @if (TempData["Success"] != null)
+                {
+                    <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 10px; margin: 2rem 0;">
+                        @TempData["Success"]
+                    </div>
+                }
+
+                @if (TempData["Error"] != null)
+                {
+                    <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 10px; margin: 2rem 0;">
+                        @TempData["Error"]
+                    </div>
+                }
+
+                <form asp-action="SeedData" method="post" style="margin-top: 2rem;">
+                    <button type="submit" class="btn" style="background: var(--primary-color); color: white; padding: 1rem 3rem; font-size: 1.1rem;">
+                        🚀 SEED DATABASE (This will CLEAR all existing data)
+                    </button>
+                </form>
+
+                <div style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 10px; font-size: 0.9rem;">
+                    <strong>Demo Login:</strong><br>
+                    Username: <code>admin</code><br>
+                    Password: <code>admin123</code>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

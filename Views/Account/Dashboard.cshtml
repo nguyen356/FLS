@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    var role = ViewBag.Role as string;
+    var username = ViewBag.Username as string;
+    var flowers = ViewBag.Flowers as List<FlowerShop.Models.Flowerdb>;
+    var sales = ViewBag.Sales as List<FlowerShop.Models.Sale>;
+    var totalSales = ViewBag.TotalSales as long? ?? 0;
+    var totalRevenue = ViewBag.TotalRevenue as decimal? ?? 0m;
+}
+
+<section class="section">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h1 style="font-size: 2.5rem; color: var(--primary-color);">🌸 Dashboard</h1>
+            <div style="margin-top: 1rem;">
+                <span style="font-size: 1.2rem;">👋 Hello, @username!</span><br>
+                <span style="background: var(--primary-color); color: white; padding: 0.5rem 1rem; border-radius: 25px; font-weight: 600;">
+                    @role Role
+                </span>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+            <div class="flower-card" style="text-align: center; padding: 2rem;">
+                <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">🌺</div>
+                <h3>Total Flowers</h3>
+                <div style="font-size: 2.5rem; font-weight: 700; color: var(--dark-color);">@flowers?.Count</div>
+            </div>
+            <div class="flower-card" style="text-align: center; padding: 2rem;">
+                <div style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">💰</div>
+                <h3>Total Revenue</h3>
+                <div style="font-size: 2.5rem; font-weight: 700; color: var(--dark-color);">$@totalRevenue.ToString("F2")</div>
+            </div>
+            <div class="flower-card" style="text-align: center; padding: 2rem;">
+                <div style="font-size: 3rem; color: #28a745; margin-bottom: 1rem;">📦</div>
+                <h3>Total Sales</h3>
+                <div style="font-size: 2.5rem; font-weight: 700; color: var(--dark-color);">@totalSales</div>
+            </div>
+            <div class="flower-card" style="text-align: center; padding: 2rem;">
+                <div style="font-size: 3rem; color: #ffc107; margin-bottom: 1rem;">📊</div>
+                <h3>Low Stock</h3>
+                <div style="font-size: 2.5rem; font-weight: 700; color: #dc3545;">@(flowers?.Count(f => f.Stock < 10) ?? 0)</div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+            <!-- Inventory Table -->
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--primary-color);">📦 Inventory Status</h3>
+                <div class="flower-card" style="max-height: 400px; overflow-y: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: var(--primary-color); color: white;">
+                                <th style="padding: 1rem; text-align: left;">Flower</th>
+                                <th style="padding: 1rem; text-align: right;">Available</th>
+                                <th style="padding: 1rem; text-align: right;">Sold</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var flower in flowers ?? new List<FlowerShop.Models.Flowerdb>())
+                            {
+                                <tr style="border-bottom: 1px solid #eee;">
+                                    <td style="padding: 1rem; font-weight: 500;">@flower.Name</td>
+                                    <td style="padding: 1rem; text-align: right;
+                                        color: @(flower.Stock < 10 ? "#dc3545" : "#28a745");
+                                        font-weight: 600;">
+                                        @flower.Stock
+                                    </td>
+                                    <td style="padding: 1rem; text-align: right; color: var(--accent-color);">
+                                        @flower.Sold
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Recent Sales -->
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--primary-color);">🛒 Recent Sales</h3>
+                <div class="flower-card" style="max-height: 400px; overflow-y: auto;">
+                    @if (sales != null && sales.Any())
+                    {
+                        @foreach (var sale in sales)
+                        {
+                            <div style="padding: 1rem; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-weight: 600;">@sale.FlowerName</div>
+                                    <div style="color: #666; font-size: 0.9rem;">@sale.CustomerName</div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-weight: 600; color: var(--accent-color);">@sale.Quantity x</div>
+                                    <div style="font-size: 1.1rem; font-weight: 700;">$@sale.TotalPrice.ToString("F2")</div>
+                                    <div style="font-size: 0.8rem; color: #666;">@sale.SaleDate.ToString("MMM dd")</div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div style="text-align: center; padding: 2rem; color: #666;">
+                            No sales yet. Be the first customer! 🛒
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        @if (role == "Admin" || role == "Manager")
+        {
+            <div style="margin-top: 3rem; text-align: center;">
+                <a href="#" class="btn" style="background: #dc3545; color: white; font-size: 1.1rem; padding: 1rem 2rem;"
+                   onclick="alert('Full CRUD operations coming soon! 🚀')">Manage Inventory & Users</a>
+            </div>
+        }
+    </div>
+</section>

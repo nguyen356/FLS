@@ -1,0 +1,77 @@
+﻿@model List<FlowerShop.Models.Flowerdb>
+@{
+    ViewData["Title"] = "Manage Inventory";
+    var lowStock = ViewBag.LowStock as List<FlowerShop.Models.Flowerdb>;
+}
+
+<div class="container" style="padding: 2rem 0;">
+    <h2 class="section-title">🛒 Inventory Management</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <a href="/Manager/AddFlower" class="btn" style="background: var(--primary-color); color: white;">
+                ➕ Add New Flower
+            </a>
+        </div>
+        <div class="col-md-6 text-end">
+            <span class="badge bg-warning">@lowStock?.Count Low Stock Items</span>
+        </div>
+    </div>
+
+    <!-- Low Stock Alert -->
+    @if (lowStock != null && lowStock.Any())
+    {
+        <div class="alert alert-warning">
+            ⚠️ <strong>@lowStock.Count Low Stock Items:</strong>
+            @foreach (var item in lowStock.Take(3))
+            {
+                <span class="badge bg-danger">@item.Name (@item.Stock left)</span>
+            }
+            @if (lowStock.Count > 3)
+            {
+                <span>...</span>
+            }
+        </div>
+    }
+
+    <!-- Flowers Table -->
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Sold</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var flower in Model)
+                {
+                    <tr>
+                        <td><img src="@flower.ImageUrl" style="width:50px;height:50px;object-fit:cover;border-radius:5px;" onerror="this.src='https://via.placeholder.com/50?text=@flower.Name[0]'"></td>
+                        <td><strong>@flower.Name</strong><br><small>@flower.Category</small></td>
+                        <td><strong>$@flower.Price</strong></td>
+                        <td>
+                            <span class="badge @(flower.Stock < 10 ? "bg-danger" : "bg-success")">@flower.Stock</span>
+                        </td>
+                        <td><span class="badge bg-info">@flower.Sold</span></td>
+                        <td>
+                            <a href="/Manager/EditFlower/@flower.Id" class="btn btn-sm btn-primary">Edit</a>
+                            <form asp-action="DeleteFlower" asp-route-id="@flower.Id" method="post" style="display:inline;" onsubmit="return confirm('Delete @flower.Name?')">
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

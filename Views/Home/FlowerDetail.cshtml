@@ -1,0 +1,25 @@
+﻿@model FlowerShop.Models.Flowerdb
+@{
+    ViewData["Title"] = Model?.Name ?? "Flower Details";
+}
+
+<section class="section">
+    <div class="container">
+        <div class="flower-card" style="max-width: 600px; margin: 0 auto;">
+            <img src="@Model.ImageUrl" alt="@Model.Name" class="flower-image"
+                 onerror="this.src='https://via.placeholder.com/600x400/ff6b9d/ffffff?text=@Model.Name'">
+            <span class="stock">@(Model.Stock > 0 ? "In Stock" : "Out of Stock")</span>
+            <div class="flower-info" style="padding: 2rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;">@Model.Name</h2>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">@Model.Description</p>
+                <div class="price" style="font-size: 2rem; margin-bottom: 1.5rem;">$@Model.Price</div>
+                <div style="margin-bottom: 2rem;">
+                    <strong>Category:</strong> @Model.Category<br>
+                    <strong>Stock:</strong> @Model.Stock available
+                </div>
+                <a href="/Home/Shop" class="btn" style="margin-right: 1rem;">Continue Shopping</a>
+                <button class="btn" style="background: var(--primary-color); color: white;">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</section>

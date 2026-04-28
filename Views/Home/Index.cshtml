@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var flowers = ViewBag.Flowers as List<FlowerShop.Models.Flowerdb>;
+}
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Fresh Flowers, Delivered with Love</h1>
+            <p>Discover the beauty of nature's finest blooms. Perfect for every occasion.</p>
+            <a href="/Home/Shop" class="btn">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+@if (flowers != null)
+{
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Flowers</h2>
+            <div class="flowers-grid">
+                @foreach (var flower in flowers.Take(3))
+                {
+                    <div class="flower-card">
+                        <img src="@flower.ImageUrl" alt="@flower.Name" class="flower-image"
+                             onerror="this.src='https://via.placeholder.com/300x250/ff6b9d/ffffff?text=@flower.Name'">
+                        <span class="stock">@(flower.Stock > 0 ? $"{flower.Stock} In Stock" : "Out of Stock")</span>
+                        <div class="flower-info">
+                            <h3>@flower.Name</h3>
+                            <p>@flower.Description</p>
+                            <div class="price">$@flower.Price</div>
+                            <a href="/Home/FlowerDetail/@flower.Id" class="btn">View Details</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="/Home/Shop" class="btn">View All Flowers</a>
+            </div>
+        </div>
+    </section>
+}

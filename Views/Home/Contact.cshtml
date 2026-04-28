@@ -1,0 +1,65 @@
+﻿@model FlowerShop.Models.ContactModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+
+        @if (TempData["Success"] != null)
+        {
+            <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 10px; margin-bottom: 2rem; text-align: center;">
+                @TempData["Success"]
+            </div>
+        }
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary-color);">Contact Information</h3>
+                <div style="display: grid; gap: 1rem;">
+                    <div>
+                        <strong>📧 Email:</strong><br> info@blossomshop.com
+                    </div>
+                    <div>
+                        <strong>📱 Phone:</strong><br> (555) 123-4567
+                    </div>
+                    <div>
+                        <strong>🌍 Address:</strong><br> 123 Flower Street, Floral City, FC 12345
+                    </div>
+                    <div>
+                        <strong>🕒 Hours:</strong><br> Mon-Fri: 9AM-7PM<br>Sat-Sun: 10AM-6PM
+                    </div>
+                </div>
+            </div>
+
+            <form asp-action="Contact" method="post" class="contact-form">
+                <div class="form-group">
+                    <label for="Name">Full Name</label>
+                    <input asp-for="Name" type="text" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input asp-for="Email" type="email" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Subject">Subject</label>
+                    <input asp-for="Subject" type="text" required />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Message">Message</label>
+                    <textarea asp-for="Message" rows="6" required></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn" style="background: var(--primary-color); color: white; width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

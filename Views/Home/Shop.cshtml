@@ -1,0 +1,26 @@
+﻿@model List<FlowerShop.Models.Flowerdb>
+@{
+    ViewData["Title"] = "Shop";
+}
+
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Our Collection</h2>
+        <div class="flowers-grid">
+            @foreach (var flower in Model)
+            {
+                <div class="flower-card">
+                    <img src="@flower.ImageUrl" alt="@flower.Name" class="flower-image"
+                         onerror="this.src='https://via.placeholder.com/300x250/ff6b9d/ffffff?text=@flower.Name'">
+                    <span class="stock">@(flower.Stock > 0 ? "In Stock" : "Out of Stock")</span>
+                    <div class="flower-info">
+                        <h3>@flower.Name</h3>
+                        <p>@flower.Description</p>
+                        <div class="price">$@flower.Price</div>
+                        <a href="/Home/FlowerDetail/@flower.Id" class="btn">View Details</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
