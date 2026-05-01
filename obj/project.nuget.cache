@@ -1,13 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "8OukDNoui0U=",
+  "dgSpecHash": "odMTsBaMIYI=",
   "success": true,
   "projectFilePath": "C:\\Users\\showy\\source\\repos\\Flowershop\\Flowershop\\Flowershop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\showy\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\showy\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "C:\\Users\\showy\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
-    "C:\\Users\\showy\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\showy\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.0\\microsoft.aspnetcore.mvc.razor.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\showy\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\10.0.7\\microsoft.aspnetcore.mvc.razor.runtimecompilation.10.0.7.nupkg.sha512",
     "C:\\Users\\showy\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
@@ -34,18 +33,6 @@
       "warningLevel": 1,
       "filePath": "C:\\Users\\showy\\source\\repos\\Flowershop\\Flowershop\\Flowershop.csproj",
       "libraryId": "Microsoft.AspNetCore.Session",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1510",
-      "level": "Warning",
-      "message": "PackageReference Microsoft.AspNetCore.Http.Features will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
-      "projectPath": "C:\\Users\\showy\\source\\repos\\Flowershop\\Flowershop\\Flowershop.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\showy\\source\\repos\\Flowershop\\Flowershop\\Flowershop.csproj",
-      "libraryId": "Microsoft.AspNetCore.Http.Features",
       "targetGraphs": [
         "net10.0"
       ]

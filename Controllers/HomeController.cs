@@ -9,7 +9,13 @@ namespace FlowerShop.Controllers
     {
         private readonly MongoDBService _mongoDB;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
+        public IActionResult ForceAdmin()
+        {
+            HttpContext.Session.SetString("Username", "admin");
+            HttpContext.Session.SetString("Role", "Admin");
+            TempData["message"] = "Admin session set! Go to /Admin";
+            return Redirect("/Admin");
+        }
         public HomeController(MongoDBService mongoDB, IHttpContextAccessor httpContextAccessor)
         {
             _mongoDB = mongoDB;

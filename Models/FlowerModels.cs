@@ -8,16 +8,25 @@ namespace FlowerShop.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = "";
+        public string? Id { get; set; }
 
-        public string Name { get; set; } = "";
-        public string Description { get; set; } = "";
+        public string Name { get; set; } = string.Empty;
+        public string Species { get; set; } = string.Empty;
+        public double Height { get; set; }
+        public double Diameter { get; set; }
+        public string Location { get; set; } = string.Empty;
+        public string Status { get; set; } = "available"; // available, reserved, sold
         public decimal Price { get; set; }
-        public string ImageUrl { get; set; } = "";
-        public string Category { get; set; } = "";
+        public string? ImageUrl { get; set; }
+        public string Category { get; set; } 
         public int Stock { get; set; }
-        public int Sold { get; set; } = 0;
+        public int Sold { get; set; } 
+        public string? Description { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+
+        // Foreign key reference to Customer
+        public string? CustomerId { get; set; }
     }
 
     public class Sale

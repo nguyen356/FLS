@@ -1,0 +1,43 @@
+﻿@model FlowerShop.Models.Flowerdb
+<h3>Add Product</h3>
+<form asp-action="CreateProduct" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label>Name</label>
+                <input asp-for="Name" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label>Category</label>
+                <input asp-for="Category" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label>Price</label>
+                <input asp-for="Price" class="form-control" type="number" step="0.01" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label>Stock</label>
+                <input asp-for="Stock" class="form-control" type="number" />
+            </div>
+            <div class="mb-3">
+                <label>Image URL</label>
+                <input asp-for="ImageUrl" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label>Status</label>
+                <select asp-for="Status" class="form-control">
+                    <option value="available">Available</option>
+                    <option value="reserved">Reserved</option>
+                    <option value="sold">Sold</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label>Description</label>
+        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+</form>

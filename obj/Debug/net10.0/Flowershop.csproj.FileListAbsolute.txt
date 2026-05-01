@@ -451,4 +451,6 @@ C:\Users\showy\source\repos\Flowershop\Flowershop\obj\Debug\net10.0\refint\Flowe
 C:\Users\showy\source\repos\Flowershop\Flowershop\obj\Debug\net10.0\Flowershop.pdb
 C:\Users\showy\source\repos\Flowershop\Flowershop\obj\Debug\net10.0\Flowershop.genruntimeconfig.cache
 C:\Users\showy\source\repos\Flowershop\Flowershop\obj\Debug\net10.0\ref\Flowershop.dll
+C:\Users\showy\source\repos\Flowershop\Flowershop\obj\Debug\net10.0\Flowershop.sourcelink.json
 C:\Users\showy\source\repos\Flowershop\Flowershop\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\showy\source\repos\Flowershop\Flowershop\obj\Debug\net10.0\compressed\lvyzjkusbj-{0}-rm2vkybn85-rm2vkybn85.gz

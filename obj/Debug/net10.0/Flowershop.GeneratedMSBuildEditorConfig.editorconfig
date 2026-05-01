@@ -34,6 +34,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Admin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Admin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Admin/Products.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Admin/User.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Debug/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVidWdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Home/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,22 +72,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Home/Shop.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG9wLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Manager/AddFlower.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxBZGRGbG93ZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Manager/EditFlower.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxFZGl0Rmxvd2VyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Manager/Inventory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxJbnZlbnRvcnkuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Seed/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VlZFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/showy/source/repos/Flowershop/Flowershop/Views/Shared/Error.cshtml]

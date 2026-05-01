@@ -21,19 +21,47 @@ namespace FlowerShop.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (!ModelState.IsValid) return View(model);
+            System.Diagnostics.Debug.WriteLine($"=== LOGIN DEBUG ===");
+            System.Diagnostics.Debug.WriteLine($"Username: '{model.Username}'");
+            System.Diagnostics.Debug.WriteLine($"Password: '{model.Password?.Length} chars'");
 
-            var user = await _mongoDB.Users.Find(u => u.Username == model.Username && u.IsActive).FirstOrDefaultAsync();
+            if (!ModelState.IsValid)
+            {
+                System.Diagnostics.Debug.WriteLine("❌ Model invalid");
+                return View(model);
+            }
+
+            var users = await _mongoDB.Users.Find(_ => true).ToListAsync();
+            System.Diagnostics.Debug.WriteLine($"Total users in DB: {users.Count}");
+
+            var user = await _mongoDB.Users.Find(u => u.Username == model.Username).FirstOrDefaultAsync();
+            System.Diagnostics.Debug.WriteLine($"User found: {user != null}");
+            if (user != null)
+            {
+                System.Diagnostics.Debug.WriteLine($"  Username: {user.Username}");
+                System.Diagnostics.Debug.WriteLine($"  Role: {user.Role}");
+                System.Diagnostics.Debug.WriteLine($"  Active: {user.IsActive}");
+                System.Diagnostics.Debug.WriteLine($"  Password match: {VerifyPassword(model.Password, user.PasswordHash)}");
+            }
+
             if (user != null && VerifyPassword(model.Password, user.PasswordHash))
             {
+                System.Diagnostics.Debug.WriteLine("✅ MATCH - Setting session");
+                HttpContext.Session.Clear();
                 HttpContext.Session.SetString("UserId", user.Id ?? "");
                 HttpContext.Session.SetString("Username", user.Username);
                 HttpContext.Session.SetString("Role", user.Role);
-                TempData["Success"] = "Welcome back!";
-                return RedirectToAction("Index", "Home");
+
+                // Force save
+                await HttpContext.Session.CommitAsync();
+
+                System.Diagnostics.Debug.WriteLine($"SESSION SAVED - Role: '{HttpContext.Session.GetString("Role")}'");
+                TempData["Success"] = "Login successful!";
+                return Redirect("/Admin");
             }
 
-            ModelState.AddModelError("", "Invalid credentials");
+            System.Diagnostics.Debug.WriteLine("❌ LOGIN FAILED");
+            ModelState.AddModelError("", $"Invalid: {model.Username}");
             return View(model);
         }
 

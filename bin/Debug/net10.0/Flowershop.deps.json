@@ -38,7 +38,6 @@
     ".NETCoreApp,Version=v10.0": {
       "Flowershop/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "10.0.7",
           "Microsoft.AspNetCore.Session": "2.3.9",
           "MongoDB.Bson": "2.28.0",
@@ -80,7 +79,7 @@
           "Microsoft.AspNetCore.Http.Connections": "10.0.0.0",
           "Microsoft.AspNetCore.Http": "10.0.0.0",
           "Microsoft.AspNetCore.Http.Extensions": "10.0.0.0",
-          "Microsoft.AspNetCore.Http.Features.Reference": "10.0.0.0",
+          "Microsoft.AspNetCore.Http.Features": "10.0.0.0",
           "Microsoft.AspNetCore.Http.Results": "10.0.0.0",
           "Microsoft.AspNetCore.HttpLogging": "10.0.0.0",
           "Microsoft.AspNetCore.HttpOverrides": "10.0.0.0",
@@ -903,7 +902,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.AspNetCore.Http.Features.Reference/10.0.0.0": {
+      "Microsoft.AspNetCore.Http.Features/10.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Http.Features.dll": {}
         },
@@ -2523,9 +2522,6 @@
         },
         "compileOnly": true
       },
-      "Microsoft.AspNetCore.Http.Features/5.0.17": {
-        "compileOnly": true
-      },
       "Microsoft.AspNetCore.Session/2.3.9": {
         "compileOnly": true
       },
@@ -2844,7 +2840,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Http.Features.Reference/10.0.0.0": {
+    "Microsoft.AspNetCore.Http.Features/10.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -4193,13 +4189,6 @@
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
-    },
-    "Microsoft.AspNetCore.Http.Features/5.0.17": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3jG2xS+dx8DDCGV/F+STdPTg89lX3ao3dF/VEPvJaz3wzBIjuadipTtYNEXDIVuOPZwb6jdmhrX9jkzOIBm5cw==",
-      "path": "microsoft.aspnetcore.http.features/5.0.17",
-      "hashPath": "microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Session/2.3.9": {
       "type": "package",

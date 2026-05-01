@@ -1,12 +1,15 @@
 using FlowerShop.Services;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews()
-    .AddRazorRuntimeCompilation(); // ✅ Fixed
+// ✅ FIXED: Scoped instead of Singleton for MongoDBService
+builder.Services.AddScoped<MongoDBService>();  // ← Changed from Singleton
 
-builder.Services.AddSingleton<MongoDBService>();
+// ✅ Razor compilation
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+// ✅ HttpContextAccessor & Session
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession(options =>
 {
@@ -17,7 +20,7 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -26,16 +29,15 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
+// ✅ Session BEFORE authorization/routing
 app.UseSession();
+app.UseAuthorization();
+app.MapControllerRoute(
+    name: "admin",
+    pattern: "admin/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
-    name: "seed",
-    pattern: "seed/{action=Index}/{id?}");
-
 app.Run();

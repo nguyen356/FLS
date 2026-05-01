@@ -1,0 +1,36 @@
+﻿<h1>🛠️ Admin Panel</h1>
+
+<div class="admin-grid">
+    <a href="/Admin/Products" class="admin-card">
+        <h3>🌹 Products</h3>
+        <p>Add, edit, delete flowers</p>
+    </a>
+    <a href="/Admin/Users" class="admin-card">
+        <h3>👥 Users</h3>
+        <p>Manage customer accounts</p>
+    </a>
+</div>
+
+<style>
+    .admin-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .admin-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 20px;
+        text-decoration: none;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        transition: transform 0.3s;
+    }
+
+        .admin-card:hover {
+            transform: translateY(-10px);
+        }
+</style>

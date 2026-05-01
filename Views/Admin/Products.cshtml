@@ -1,0 +1,63 @@
+﻿@model List<FlowerShop.Models.Flowerdb>
+<h2>🌸 Products</h2>
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success">@TempData["success"]</div>
+}
+
+<!-- 1-CLICK ADD FORM -->
+<div class="add-form mb-4 p-4 bg-light border rounded">
+    <h4>➕ Add Product to Database</h4>
+    <form asp-action="AddProduct" method="post" class="row g-2">
+        <div class="col-md-2">
+            <input name="name" placeholder="Name" class="form-control" required />
+        </div>
+        <div class="col-md-2">
+            <input name="price" placeholder="Price" type="number" step="0.01" class="form-control" required />
+        </div>
+        <div class="col-md-2">
+            <input name="stock" placeholder="Stock" type="number" class="form-control" value="50" />
+        </div>
+        <div class="col-md-2">
+            <input name="category" placeholder="Category" class="form-control" value="Roses" />
+        </div>
+        <div class="col-md-2">
+            <input name="imageUrl" placeholder="Image URL" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-success w-100">➕ Add Now</button>
+        </div>
+    </form>
+</div>
+
+<!-- LIVE PRODUCTS FROM DB -->
+<h4>Products in Database (@Model.Count)</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Category</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>$@p.Price</td>
+                <td>@p.Stock</td>
+                <td>@p.Category</td>
+                <td>
+                    <form asp-action="DeleteProduct" asp-route-id="@p.Id" method="post" style="display:inline">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Admin" class="btn btn-secondary">← Dashboard</a>
